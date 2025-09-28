@@ -1,5 +1,6 @@
 import os
 from config import MAX_FILE_READ_CHARS
+from google.genai import types
 
 
 def get_file_content(working_directory, filepath):
@@ -24,3 +25,18 @@ def get_file_content(working_directory, filepath):
         return file_content_string
     except Exception as e:
         return f"Error reading file content: {e}"
+
+
+schema_get_file_content = types.FunctionDeclaration(
+    name="get_file_content",
+    description="Returns file content as a string. If file's content was larger than specified in the config, truncates it. (Adequate message provided at the end of returned string)",
+    parameters=types.Schema(
+        type=types.Type.OBJECT,
+        properties={
+            "filepath": types.Schema(
+                type=types.Type.STRING,
+                description="The file to read content from, relative to the working directory.",
+            ),
+        },
+    ),
+)
