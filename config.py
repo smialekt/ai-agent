@@ -1,5 +1,6 @@
 MAX_FILE_READ_CHARS = 10000
 PYTHON_RUN_TIMEOUT = 30
+WORKING_DIRECTORY = "./calculator"
 SYSTEM_PROMPT = """
 You are a helpful AI coding agent.
 
